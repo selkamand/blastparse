@@ -1,0 +1,25 @@
+assembly_accession	GCF_000006945.2
+bioproject	PRJNA57799
+biosample	SAMN02604315
+wgs_master	
+refseq_category	reference genome
+taxid	99287
+species_taxid	28901
+organism_name	Salmonella enterica subsp. enterica serovar Typhimurium str. LT2
+infraspecific_name	
+isolate	
+version_status	latest
+assembly_level	Complete Genome
+release_type	Major
+genome_rep	Full
+seq_rel_date	2016/01/13
+asm_name	ASM694v2
+submitter	Washington University Genome Sequencing Center
+gbrs_paired_asm	GCA_000006945.2
+paired_asm_comp	identical
+ftp_path	https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/006/945/GCF_000006945.2_ASM694v2
+excluded_from_refseq	
+relation_to_type_material	assembly from type material
+asm_not_live_date	na
+ref_score	101400
+best_ref	TRUE

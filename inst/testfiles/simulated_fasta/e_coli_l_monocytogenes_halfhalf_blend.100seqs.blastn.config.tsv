@@ -1,0 +1,8 @@
+evalue_threshold	1e-10
+max_target_seqs	20
+percentage_identity	90
+outfmt	6 std staxid qcovs qcovhsp stitle
+max_hsps	10
+subject_besthit	TRUE
+query	inst/testfiles/simulated_fasta/e_coli_l_monocytogenes_halfhalf_blend.100seqs.fasta
+num_seqs_blasted	100

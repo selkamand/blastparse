@@ -1,0 +1,75 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# blastparse
+
+<!-- badges: start -->
+
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
+<!-- badges: end -->
+
+Parse the results of a nucleotide blast and figure out what species / genus the blasted sequences are most likely to have come from.
+
+## Installation
+
+You can install the development version of blastparse like so:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("selkamand/blastparse")
+```
+
+## Detailed Description
+
+This package was developed to facilitate validation of species/genus classifications by metagenomics classifiers such as **Kraken2**.
+
+Often we want to make sure that a group of sequences we think belong to some species actually belongs to that species, rather than simply being the closest hit in a relatively small database. By blasting a subset of these sequence against one of the largest databases around (ncbi nt) we can gain confidence that our predictions are indeed accurate (or we learn that we might be completely wrong!)
+
+## Typical Workflow
+
+Start with a bunch of sequences that you think belong to the same organism. For example, you could start with the reads from a microbiome WGS study that a metagenomics classifier (e.g. Kraken2) has classified as *E. coli*. Some simulated data is available within this package (add link)
+
+Run a subsample of these sequences (100-200 reads) through a nucleotide blast (against the full ncbi nucleotide database). You will need the ncbi blast commandline tool installed to do this.
+
+```{r, eval=FALSE}
+# Run nucleotide blast
+blast_run(query = "path/to/input.fasta", outfile_prefix = "my_samples")
+
+# Run blast against custom database
+blast_run(query = "path/to/input.fasta", outfile_prefix = "my_samples" , db = "path/to/blast/database/dbname", remote = FALSE)
+```
+
+Next we pull this data into the R package and produce the visualizations and summaries we need to assess what species we have. We will use exemplar output created by running `blast_run` on `system.file("testfiles/simulated_fasta/e_coli_1.100seqs.fasta",package = "blastparse")`
+
+```{r}
+library(blastparse)
+blast_results = system.file("testfiles/simulated_fasta/e_coli_1.100seqs.blastn.tsv",package = "blastparse")
+
+# Parse blast results 
+blast <- blast_parse(blast_path = blast_results)
+
+# Look at the top microbial hits
+blast_top_microbes_barplot(blast, interactive = FALSE)
+
+# config files will automatically be found if in same directory, otherwise you'll need to additionally specify the `blast_config_path` paramater when running blast_parse
+```
+
+Finally, we generate a html report describing the results
+
+```{r}
+# In progress
+#report <- blast_report(blast)
+```
