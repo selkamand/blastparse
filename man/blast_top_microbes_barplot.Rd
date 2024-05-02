@@ -8,7 +8,7 @@ Maybe this isn't the write way of looking at things. a lot of sequences might ma
 equally well to multiple sequences
 Maybe just plot a barplot describing the number of sequences in which each species present as a tophit is present in the db}
 \usage{
-blast_top_microbes_barplot(blast)
+blast_top_microbes_barplot(blast, interactive = TRUE)
 }
 \arguments{
 \item{blast}{blast object. see \code{\link[=blast_parse]{blast_parse()}}}
