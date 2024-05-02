@@ -31,7 +31,9 @@ Imports:
     taxizedb,
     tidyr,
     utilitybeltassertions,
-    utilitybeltfmt
+    utilitybeltfmt,
+    fmt
 Remotes:
   selkamand/utilitybeltassertions,
-  selkamand/utilitybeltfmt
+  selkamand/utilitybeltfmt,
+  selkamand/fmt
